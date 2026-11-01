@@ -26,3 +26,8 @@ local function move_buffer(cmd)
 end
 vim.keymap.set("n", "<leader>bl", move_buffer("BufferLineMoveNext"), { desc = "Move Buffer Right (count)" })
 vim.keymap.set("n", "<leader>bh", move_buffer("BufferLineMovePrev"), { desc = "Move Buffer Left (count)" })
+
+-- Replace every occurrence in the file: <leader>rw on a word (or a visual selection),
+-- type the replacement, press <cr>
+vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace word (file)" })
+vim.keymap.set("x", "<leader>rw", [["zy:%s/\V<C-r>z//gI<Left><Left><Left>]], { desc = "Replace selection (file)" })
